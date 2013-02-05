@@ -59,13 +59,16 @@ jQuery(function($) {
       var hiddenField = $link.prev('input[type=hidden]');
       hiddenField.val('1');
       
-      var field = $link.closest('.fields');
-      field.hide();
+      var field = this.hideFields($link, assoc);
       
       field
         .trigger({ type: 'nested:fieldRemoved', field: field })
         .trigger({ type: 'nested:fieldRemoved:' + assoc, field: field });
       return false;
+    },
+    hideFields: function(link, assoc) {
+      var field = link.closest('.fields').hide();
+      return field;
     }
   };
 
